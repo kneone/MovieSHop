@@ -1,0 +1,41 @@
+ADO.NET -> takes lots of time to write 
+and Dapper (micro ORM) (StackOverflow) to connet to DB
+Select * from Movies where name like '%Ave%' => 20 records
+Id, Title, Budget
+Mappper (miceo ORM Object Relational Mapping)
+MovieCard -> Id, Tile, Budget
+db.ExecuteQuery<List<MovieCard>>("Select * from Movies where name like '%Ave%' => 20 records")
+
+Already have database ready -> Northwind, AdventureWorkdsa
+
+Full ORM
+Entity Framework (MS)
+				 -> Create Database without writing single line of SQL Code
+				 -> C# code , Migrations -> 
+
+				 -> Connect to db and get data without writing single line of SQL Code
+				 -> Select * from Movies where name like '%Ave%' => 20 records
+				 -> LINQ -> 
+
+ADO.NET -> 1
+Dapper  -> 2
+EF 6	-> very very fast
+
+EF Core -> Code first Approach to create the DB
+		-> Create entities and we apply some rules
+		-> Mimrations in EF ->
+
+		DbContext -> Represents the database
+		Dbset -> Represents the table
+		one DbContext, many Dbset 
+
+1. Nuget and download the pachages
+2. Keep Connection string for EF -> Server name, database name
+3. Create a class that represent the table
+4. Create a new DbContext class
+5. Establish connectionString with DBContext by injecting from appsettings
+6. create new DbSet property for the entity
+7. Migrations in side Tools -> nuget Package Manger Console. Always run migrations aganist project that has DbContext location
+8. Always make sure the migration files have meaningful names
+9. Data Annotations (attributes []) or Fluent API
+If you are using non-windows machine, like mac or linux or if you are not using Visual Studio then need Microsoft.EntityFrameworkCore.Design
