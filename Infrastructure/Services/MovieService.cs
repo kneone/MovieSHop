@@ -43,8 +43,16 @@ namespace Infrastructure.Services
                 Budget = movie.Budget,
                 Revenue = movie.Revenue,
                 ReleaseDate = movie.ReleaseDate,
-                // todo add all the properties along with rating
-            };
+                Overview = movie.Overview, 
+                TmdbUrl = movie.TmdbUrl,
+                Tagline= movie.Tagline,
+                BackdropUrl = movie.BackdropUrl,
+                OriginalLanguage = movie.OriginalLanguage,
+                RunTime = movie.RunTime,    
+                Price = movie.Price,
+               
+        // todo add all the properties along with rating
+    };
             movieDetails.Trailers = new List<TrailerModel>();
             foreach (var trailer in movie.Trailers)
             {
@@ -52,7 +60,25 @@ namespace Infrastructure.Services
             }
 
             // todo loop through genres and add genres model
+
+
+            movieDetails.Genres = new List<GenreModel>();
+            foreach (var genres in movie.GenresOfMovie)
+            {
+                movieDetails.Genres.Add(new GenreModel { Id = genres.GenreId, Name = genres.Genre.Name });
+            }
             // todo loop through cast and add to casts model
+            movieDetails.Casts = new List<CastModel>();
+            foreach (var casts in movie.CastsOfMovie)
+            {
+                movieDetails.Casts.Add(new CastModel
+                {
+                    Id = casts.CastId,
+                    Name = casts.Cast.Name,
+                    ProfilePath = casts.Cast.ProfilePath,
+                    Character = casts.Character
+                });
+            }
 
             return movieDetails;
 

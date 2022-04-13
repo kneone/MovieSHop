@@ -1,8 +1,174 @@
 ﻿@model ApplicationCore.Models.MovieDetailsModel
 
-<h1>
-    @Model.Title
-</h1>
-<h3>
-    @Model.Overview
-</h3>
+
+
+<style>
+    .jumbotron
+    {
+        background-image:url("@Model.BackdropUrl");
+        background-filter: brightness(20%);
+        
+        filter: brightness(20%);
+        background-size: cover;
+        
+    }
+  /*  .bg
+    {
+         filter: brightness(20%);
+    }*/
+    
+  
+
+    .title
+    {
+        color:white;
+    }
+    
+</style>
+
+<header>
+
+    <div class="jumbotron">
+        
+        <div class= "row ">
+           
+          
+            
+            <div class="col-xl-4 col-sm-4 col-md-4 col-4">
+                <img src="@Model.PosterUrl" alt="@Model.Title" >
+            </div>
+            
+            <div class="col-xl-8 col-sm-8 col-md-8 col-8">
+                <div class ="row header title">
+                    <h1>
+                        @Model.Title 
+
+                    </h1>
+                </div>
+
+                <div class = "row header tagline">
+                    @Model.Tagline
+                </div>
+
+                 <div class = "row header runtime">
+                     @Model.RunTime | @Model.ReleaseDate
+                </div>
+                 <div class = "row header rating">
+                     <a>
+                         Rating
+                     </a>
+                </div>
+                 <div class = "row header overivew">
+                     <h3>
+                        @Model.Overview
+                    </h3>
+                </div>
+            </div>
+        </div>
+      
+    </div>
+     <div class = "row">
+            <div class = "col-xl-4 col-sm-4 col-md-4 col-4">
+                <div class = "row MF">
+                    
+                    <div class = "row ">
+                         <h1>
+                            MOVIE FACTS
+                        </h1>
+                    </div>
+
+                    <div class = "row ">
+                        Release Date<span class="badge rounded-pill bg-secondary">@Model.ReleaseDate</span>
+                    </div>
+                    
+                    <div class = "row ">
+                        Run Time<span class="badge rounded-pill bg-secondary">@Model.RunTime</span>
+                    </div>
+
+                    <div class = "row ">
+                        Box Office<span class="badge rounded-pill bg-secondary">@Model.Revenue</span>
+                    </div>
+
+                    <div class = "row ">
+                        Budget<span class="badge rounded-pill bg-secondary">@Model.Budget</span>
+                    </div>
+                    <div class = "row ">
+                        <i class="bi bi-film"></i>
+                    </div>
+                    
+                   
+                </div>
+
+                <div class = "row trailers">
+                    <ul class="list-group list-group-flush">
+                        <li class ="list-group-item bg-light">
+                            <h1>
+                                Trailers
+                            </h1>
+                        </li>
+                            @foreach(var trailers in Model.Trailers)
+                        {
+                            <li class ="list-group-item">
+                                <a href="@trailers.TrailerUrl">@trailers.Name</a>
+                            </li>
+                        }
+
+                        
+
+                    </ul>
+                    
+                </div>
+                
+            </div>
+            <div class = "col-xl-8 col-sm-8 col-md-8 col-8">
+                <div class = "row cast">
+                    <ul class="list-group list-group-flush">
+                        @foreach (var cast in Model.Casts)
+                        {
+                            <table class = "casts">
+                                    <tr>
+                                        <td>
+                                            <img src="@cast.ProfilePath" class="rounded-circle" style="width:10%" />
+                                        </td>
+                                        <td text-align: left>@cast.Name</td>
+                                        <td text-align: left>@cast.Character</td>
+                                    </tr>
+                            </table>
+        
+                        
+                        }
+                    </ul>
+
+                   @* <ul class="list-group list-group-flush castlist">
+                        <li class ="list-group-item bg-light">
+                            <h1>
+                                CAST
+                            </h1>
+                        </li>
+                            @foreach(var casts in Model.Casts)
+                        {
+                            <li class = "list-group-item cast">
+                                  <li class ="castname">
+                                    @casts.Name casts.Character
+                                
+                                  </li>
+                                   <li class ="castname">
+                                    @casts.Character
+                                
+                                  </li>
+                        
+                            
+
+                            </li>
+                          
+                        }
+
+                        
+
+                    </ul>*@
+                </div>
+            </div>
+         </div>
+
+</header>
+

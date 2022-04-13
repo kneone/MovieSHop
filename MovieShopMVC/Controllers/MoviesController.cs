@@ -12,7 +12,7 @@ namespace MovieShopMVC.Controllers
         {
             _movieService = movieService;
         }
-
+         
         public IActionResult Details(int id)
         {
             var movieDetails = _movieService.GetMovieDetails(id);

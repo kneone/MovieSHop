@@ -39,3 +39,56 @@ EF Core -> Code first Approach to create the DB
 8. Always make sure the migration files have meaningful names
 9. Data Annotations (attributes []) or Fluent API
 If you are using non-windows machine, like mac or linux or if you are not using Visual Studio then need Microsoft.EntityFrameworkCore.Design
+
+
+
+04/12
+3 Major Cloud Providers
+- AWS
+- Azure
+- GCP
+
+why need Could Services
+Company Name: ABC -> Azure/AWS
+
+MovieShop
+
+Dev Team
+Team 5 -> 4 Full stack and 1 Front End
+Local machines => Git/GitHub
+Agile Methodology -> Scrum
+2 weeks, home page, movie details page
+
+TEAM/NetWork Team
+
+changazure.qa.movieshop.cpm => Website
+
+CI/ID => Triggerd and get the code from Github and build the project
+		 and run any unit test cases and if success then it will package the 
+		 project for deplyment (Azure app Service)
+Coninuous Intergration and Deliver/Deployment
+
+QA Team
+Tesing -> Go to WebSite and test
+
+MovieShop -> MVC -> ASP.Net Core -> publish the app tp Server (Linux (Ngix) or Windows Server OS(ISS))
+			 Data Centers
+					$$$$ -> Maintain, Updates 128G RAM -> 1 TB
+			 Databse SQL Server
+MusicShop
+
+Azure 3 kinds of services
+	Iaas(Infrasturecture as Service) -> VM Virtual Machines
+		Windows Server 2019 -> 16 Core intel xenon, 256 GB Ram
+		IIS -> MVC -> ASP.Net Core
+		SQL Server => MovieShop Database
+	PaaS -> Platform as a Service
+			Azure App Service -> MVC, Python, PHP, Java
+			Azure SQL
+			Azure Static Web App Service -> Angular, React
+			Azure DevOps CI/CD
+	Saas -> Software as a Service
+			OneDrive, Google Drive, Goole Docs, Office 365, iCloud
+
+
+			gx7pen5u4ahqethq6qft5wts5g5t3bi3jbr5m2fxzihtpv7no72a
