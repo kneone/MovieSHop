@@ -24,10 +24,10 @@
 </style>
 <div class="container">
   <div class="row header" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('@Model.BackdropUrl'); background-size: cover">
-    <div class="col-4">
+    <div class="col-xl-4 col-sm-4 col-md-4 col-4">
       <img src="@Model.PosterUrl" alt="@Model.Title" >
     </div>
-    <div class="col-5">
+    <div class="col-xl-5 col-sm-5 col-md-5 col-5">
         <div class ="row header title" style = "color:white; margin-top:2%">
             <h1>
                 @Model.Title 
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="col-3">
+    <div class="col-xl-3 col-sm-3 col-md-3 col-3">
         <div class ="d-grid gap-4 col-6  row buttonreview" style = "margin-top:30%">
             <button type="button" class="btn btn-outline-secondary" style="color:white ">REVIEW</button>
             <button type="button" class="btn btn-light">BUY $@Model.Price</button>
@@ -76,7 +76,7 @@
     <div class="col-4 bg-light">
         <div class = "row moviefacts">
             <ul calss ="list-group list-group-flush">
-                <li class="list-group-item border-0 bg-light">
+                <li class="list-group-item bg-light" style="border-left:0;border-right:0">
                     <h5>MOVIE FACTS</h5>
                 </li>
 
@@ -114,7 +114,7 @@
 
                  @foreach(var trailers in Model.Trailers)
                     {
-                        <li class ="list-group-item bg-light"   style="border-left:0;border-right:0">
+                        <li class ="list-group-item bg-light border-0"  >
                             <i class="fa fa-youtube-play" style="font-size:24px"></i> <a href="@trailers.TrailerUrl" style="text-decoration: none; color:gray">@trailers.Name</a>
                         </li>
                     
