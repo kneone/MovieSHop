@@ -1,0 +1,23 @@
+up/pw ->
+Proper access to certain
+
+public pages -> Home, Movie Details, Cast Details, Login, Register
+Authenticated -> Movies Purchased, Favorites, Buy, Favorite
+Authrorization as Admin - Role -> Create Movie, Create Cast
+
+Register -> GET http:movieshop.com/account/register registwr view empty
+		    submit -> POST un/pw, fname, lastname, dof
+Login -> GET http:movieshop.com/accpunt
+
+Model Binding in ASP.NET
+	case sensitive
+
+Encryption -> We can decrypt back to original string 
+Register Problem -> HASH -> ONE WAY -> with SALT ***** no two hashed are same
+U1 -> abc@abc.com (abc123!! + Salt) -> Hashing the password  Alg1 -> asdasdasd
+U2 -> xyz@abc.com (abc123!! + asdasdas) -> Hashing Alg1 -> adasfafasd
+same input before hashing, the output will be same
+
+Login ->
+U1 -> abc@abc.com (abc123!! + Salt) -> Hashing Alg1 -> compare database with the one generated heres and if they are equal, correct password
+																						

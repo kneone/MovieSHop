@@ -19,7 +19,7 @@ namespace MovieShopMVC.Controllers
 
         }
 
-        public IActionResult Index()
+        public async Task <IActionResult> Index()
         {
             // Autofac -> DI 
             // Proprty and method injection anti pattern
@@ -41,7 +41,7 @@ namespace MovieShopMVC.Controllers
             // we need to inject the type that implements the interface
             // INjection is built in .NET Core
             // older .net framework -> rher eis no built  in DI
-            var movies = _movieService.Get30HighestGrossingMovies();
+            var movies = await _movieService.Get30HighestGrossingMovies();
             return View(movies);
         }
 

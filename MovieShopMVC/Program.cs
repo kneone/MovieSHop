@@ -14,6 +14,9 @@ builder.Services.AddControllersWithViews();
 // injecing at run time
 builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IAccountService, AccountService> ();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 
 // scopes in DI
 // AddScoped -> Http Request, its gonna create the insatcne, resuse the insatcne witin the http request, when a new Http request, new insatce

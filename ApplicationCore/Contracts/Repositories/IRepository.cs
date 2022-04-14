@@ -10,14 +10,14 @@ namespace ApplicationCore.Contracts.Repositories
     public interface IRepository<T> where T : class
     {
         //  get record from table by id
-        T GetById(int id);
+        Task<T> GetById(int id);
 
         // getting all the records for the table
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
 
-        T Add(T entity);
-        T Update(T entity);
-        void Delete(T entity);
+        Task<T> Add(T entity);
+        Task<T> Update(T entity);
+        Task Delete(T entity);
 
     }
 }
