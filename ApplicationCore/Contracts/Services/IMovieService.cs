@@ -13,5 +13,7 @@ namespace ApplicationCore.Contracts.Services
         Task<List<MovieCard>> Get30HighestGrossingMovies();
 
         Task<MovieDetailsModel> GetMovieDetails(int id);
+
+       
     }
 }

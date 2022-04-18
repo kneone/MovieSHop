@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using ApplicationCore.Contracts.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -7,6 +8,8 @@ namespace MovieShopMVC.Controllers
     [Authorize]
     public class UserController : Controller
     {
+
+       
         // show all the movies purchase by currently loged in user
         [HttpGet]
         
@@ -38,6 +41,7 @@ namespace MovieShopMVC.Controllers
 
             // Filters in ASP.NET
             var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+           
 
             // call the UserService -> GetMoviesPurchasedByUser(int userId) -> List<MovieCard>
 

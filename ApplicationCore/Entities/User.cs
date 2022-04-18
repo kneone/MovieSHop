@@ -43,5 +43,6 @@ namespace ApplicationCore.Entities
         public ICollection<Favorite> FavoritesOfUser { get; set; }
 
         public ICollection<UserRole> UserRolesOfUser { get; set; }
+        public ICollection<Role>? Roles { get; set; }
     }
 }
