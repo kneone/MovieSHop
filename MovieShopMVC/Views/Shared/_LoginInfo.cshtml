@@ -1,0 +1,40 @@
+﻿@using MovieShopMVC.Services
+@*// chechk if the user is loged in or not
+// show name and links for purchases and favorites and logout button
+
+// otherwise show login and register buttons
+*@
+
+@inject ICurrentUser currentUser
+
+@if (currentUser.IsAuthenticated)
+{
+    <div class = "text-end">
+        <ul class = "nav">
+            <li class = "nav-item dropdown text-capitalize">
+                <a class = "nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    @currentUser.FullName
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" asp-controller="User" asp-action="Purchases">Library</a></li>
+                    <li><a class="dropdown-item" asp-controller="User" asp-action="Favorites">Favorite</a></li>
+                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Profile">Account Information</a></li>
+                    <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Logout</a></li>
+
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+}
+else
+{
+    <div class = "text-end">
+        <a class = "btn btn-outline-primary me-2" asp-controller ="Account" asp-action="Login">
+            Login
+        </a>
+        <a class = "btn btn-outline-primary me-2" asp-controller ="Account" asp-action="Register">
+            Register
+        </a>
+    </div>
+}

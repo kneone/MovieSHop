@@ -1,0 +1,2 @@
+Movieshop.com/home/index -> Index View (HTML)
+Movieshop.com/movies/deatils
