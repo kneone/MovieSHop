@@ -65,17 +65,17 @@ namespace Infrastructure.Services
                 movieDetails.Genres.Add(new GenreModel { Id = genres.GenreId, Name = genres.Genre.Name });
             }
             // todo loop through cast and add to casts model
-            movieDetails.Casts = new List<CastModel>();
-            foreach (var casts in movie.CastsOfMovie)
-            {
-                movieDetails.Casts.Add(new CastModel
-                {
-                    Id = casts.CastId,
-                    Name = casts.Cast.Name,
-                    ProfilePath = casts.Cast.ProfilePath,
-                    Character = casts.Character
-                });
-            }
+            //movieDetails.Casts = new List<CastModel>();
+            //foreach (var casts in movie.CastsOfMovie)
+            //{
+            //    movieDetails.Casts.Add(new CastModel
+            //    {
+            //        Id = casts.CastId,
+            //        Name = casts.Cast.Name,
+            //        ProfilePath = casts.Cast.ProfilePath,
+            //        Character = casts.Character
+            //    });
+            //}
 
             return movieDetails;
 
