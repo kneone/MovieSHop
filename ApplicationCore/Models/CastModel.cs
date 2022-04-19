@@ -12,5 +12,7 @@ namespace ApplicationCore.Models
         public string Name { get; set; }
         public string ProfilePath { get; set; }
         public string Character { get; set; }
+
+        //could need a castDetailModel for cast detail page
     }
 }

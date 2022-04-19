@@ -16,12 +16,12 @@ namespace Infrastructure.Repositories
         {
         }
 
-        public Task<Purchase> GetPurchaseById(int userId, int movieId)
+        public Task<Purchase> GetPurchaseById(int id, int movieId)
         {
             // Include method to include the navigation properties
             // Add Cast and MovieCast to the includes to get cast information
-            var purchase = _dbContext.Purchases.Include(m => m.Users).Include(m => m.Movie)
-                    .FirstOrDefaultAsync(m => m.UserId == userId && m.MovieId == movieId);
+            var purchase = _dbContext.Purchases.Include(m => m.Users).Include(m => m.Movie).ThenInclude(m=>m.Title).Include(m=>m.Movie).ThenInclude(m=>m.PosterUrl)
+                    .FirstOrDefaultAsync(m => m.Id == id &&  m.MovieId == movieId);
             // use review dbset (table) to get average rating of the movie and assign it to movie.Rating
 
             return purchase;

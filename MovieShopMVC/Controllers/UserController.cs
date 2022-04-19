@@ -8,8 +8,13 @@ namespace MovieShopMVC.Controllers
     [Authorize]
     public class UserController : Controller
     {
+        private readonly IUserService _userService;
 
-       
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         // show all the movies purchase by currently loged in user
         [HttpGet]
         
@@ -41,23 +46,27 @@ namespace MovieShopMVC.Controllers
 
             // Filters in ASP.NET
             var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
-           
+            var purchases = await _userService.GetAllPurchasesForUser(userId);
+
 
             // call the UserService -> GetMoviesPurchasedByUser(int userId) -> List<MovieCard>
 
-            return View();
+            return View(purchases);
         }
 
         [HttpGet]
         public async Task<IActionResult> Favorites()
         {
             var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var favorties = await _userService.GetAllFavoritesForUser(userId);
             return View();
         }
 
         public async Task<IActionResult> Reviews()
         {
             var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var reviews = await _userService.GetAllReviewsByUser(userId);
+            
             return View();
         }
     }

@@ -91,7 +91,11 @@ namespace Infrastructure.Services
         public async Task<List<Favorite>> GetAllFavoritesForUser(int id)
         {
             var user = await _userRepository.GetById(id);
-
+            var userFirstname = user.FirstName;
+            var userLastname = user.LastName;
+            var user2 = user.DateOfBirth;
+            var user3 = user.Email;
+            
             var favorite = new List<Favorite>();
             foreach (var favorites in user.FavoritesOfUser)
             {
@@ -105,17 +109,33 @@ namespace Infrastructure.Services
             return favorite;
         }
 
-        public async Task<List<PurchaseDetailsModel>> GetAllPurchasesForUser(int id)
+        public async Task<PurchaseResponseModel> GetAllPurchasesForUser(int id)
         {
             var user = await _userRepository.GetById(id);
-           
-            var purchase = new List<PurchaseDetailsModel>();
+           var userFirstname = user.FirstName;
+            var purchase = new List<MovieCard>();
+            var test = user.PurchasesOfUser;
             foreach (var purchases in user.PurchasesOfUser)
             {
-                purchase.Add(new PurchaseDetailsModel { Id = purchases.Id, UserId = purchases.UserId, PurchaseNumber = purchases.PurchaseNumber, TotalPrice = purchases.TotalPrice,
-                PurchaseDateTime = purchases.PurchaseDateTime, MovieId = purchases.MovieId});
+                //var newpurchases = _purchaseRepository.GetPurchaseById(id);
+                purchase.Add(new MovieCard
+                {
+                    Id = purchases.Id,
+                    //Title = purchases.Movie.Title,
+                    //PosterUrl = purchases.Movie.Title
+                });              
+                //purchase.Add(new PurchaseDetailsModel { Id = purchases.Id, UserId = purchases.UserId, PurchaseNumber = purchases.PurchaseNumber, TotalPrice = purchases.TotalPrice,
+                //PurchaseDateTime = purchases.PurchaseDateTime, MovieId = purchases.MovieId});
             }
-            return purchase;
+
+            var purchaseOfUser = new PurchaseResponseModel
+            {
+                UserId = id,
+                NumberOfMoviesPurchased = purchase.Count,
+                PurchaseOfMovieCards = purchase
+
+            };
+            return purchaseOfUser;
         }
 
         public Task<List<MovieCard>> GetAllReviewsByUser(int id)

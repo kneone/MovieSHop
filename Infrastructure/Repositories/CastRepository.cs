@@ -26,5 +26,13 @@ namespace Infrastructure.Repositories
 
             return cast;
         }
+
+        //public async Task<IEnumerable<Cast>> GetCastsByMovie(int movieId)
+        //{
+        //    var cast = await _dbContext.Set<MovieCast>().Where(m => m.MovieId == movieId).Include(c => c.Cast).Include(c => c.Movie).Select(c => new Cast { Id = c.Cast.Id, Name = c.Cast.Name, Gender = c.Cast.Gender, TmdbUrl = c.Cast.TmdbUrl, ProfilePath = c.Cast.ProfilePath }).ToListAsync();
+
+
+        //    return cast;
+        //}
     }
 }
