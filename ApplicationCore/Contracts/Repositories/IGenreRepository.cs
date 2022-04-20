@@ -1,15 +1,14 @@
 ﻿using ApplicationCore.Entities;
-using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationCore.Contracts.Services
+namespace ApplicationCore.Contracts.Repositories
 {
-    public interface IGenreService
+    public interface IGenreRepository : IRepository<Genre>
     {
-        Task<List<Genre>> GetGenreForMovie(int movieId);
+        Task<List<Genre>> GetGenreForMovie(int id);
     }
 }
