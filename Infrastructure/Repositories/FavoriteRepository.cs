@@ -24,5 +24,11 @@ namespace Infrastructure.Repositories
 
             return favorite;
         }
+
+        public async Task<List<Favorite>> GetFavoriteForUser(int id)
+        {
+            var favorites = await _dbContext.Favorites.Include(m => m.Movie).Where(f => f.UserId == id).ToListAsync();
+            return favorites;
+        }
     }
 }

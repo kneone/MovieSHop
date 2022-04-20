@@ -13,13 +13,13 @@
 <div class="rounded">
     <div class="container-fluid">
         <div class="row">
-            @Model.UserId
-           @* @foreach (var movie in Model.PurchaseOfMovieCards)
+            
+            @foreach (var movie in Model.PurchaseOfMovieCards)
             {
                 <div class="col-xl-2 col-sm-4 col-md-3 col-6">
                     <partial name="_MovieCard" model="movie" />
                 </div>
-            }*@
+            }
         </div>
     </div>
 </div>

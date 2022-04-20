@@ -10,5 +10,6 @@ namespace ApplicationCore.Contracts.Repositories
     public interface IPurchaseRepository : IRepository<Purchase>
     {
         public Task<Purchase> GetPurchaseById(int id, int movieId);
+        Task<List<Purchase>> GetPurchasesForUser(int id);
     }
 }

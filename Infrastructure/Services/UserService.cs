@@ -88,54 +88,95 @@ namespace Infrastructure.Services
             return isFavorite;    
         }
 
-        public async Task<List<Favorite>> GetAllFavoritesForUser(int id)
+        public async Task<FavoriteResponseModel> GetAllFavoritesForUser(int id)
         {
-            var user = await _userRepository.GetById(id);
-            var userFirstname = user.FirstName;
-            var userLastname = user.LastName;
-            var user2 = user.DateOfBirth;
-            var user3 = user.Email;
-            
-            var favorite = new List<Favorite>();
-            foreach (var favorites in user.FavoritesOfUser)
+
+            var favorite = await _favoriteRepository.GetFavoriteForUser(id);
+            var allfavorite = new List<MovieCard>();
+            foreach (var moviefavorite in favorite)
             {
-                favorite.Add(new Favorite
+                allfavorite.Add(new MovieCard
                 {
-                    Id = favorites.Id,
-                    UserId = favorites.UserId,
-                    MovieId = favorites.MovieId
+                    Id = moviefavorite.Id,
+                    Title = moviefavorite.Movie.Title,
+                    PosterUrl = moviefavorite.Movie.PosterUrl
                 });
-            }
-            return favorite;
+            };
+
+            var newfavorite = new FavoriteResponseModel
+            {
+                UserId = id,
+                FavoriteOfMovieCards = allfavorite
+                
+            };
+            return newfavorite;
+            //var user = await _userRepository.GetById(id);
+            //var userFirstname = user.FirstName;
+            //var userLastname = user.LastName;
+            //var user2 = user.DateOfBirth;
+            //var user3 = user.Email;
+
+            //var favorite = new List<Favorite>();
+            //foreach (var favorites in user.FavoritesOfUser)
+            //{
+            //    favorite.Add(new Favorite
+            //    {
+            //        Id = favorites.Id,
+            //        UserId = favorites.UserId,
+            //        MovieId = favorites.MovieId
+            //    });
+            //}
+            //return favorite;
         }
 
         public async Task<PurchaseResponseModel> GetAllPurchasesForUser(int id)
         {
-            var user = await _userRepository.GetById(id);
-           var userFirstname = user.FirstName;
-            var purchase = new List<MovieCard>();
-            var test = user.PurchasesOfUser;
-            foreach (var purchases in user.PurchasesOfUser)
-            {
-                //var newpurchases = _purchaseRepository.GetPurchaseById(id);
-                purchase.Add(new MovieCard
-                {
-                    Id = purchases.Id,
-                    //Title = purchases.Movie.Title,
-                    //PosterUrl = purchases.Movie.Title
-                });              
-                //purchase.Add(new PurchaseDetailsModel { Id = purchases.Id, UserId = purchases.UserId, PurchaseNumber = purchases.PurchaseNumber, TotalPrice = purchases.TotalPrice,
-                //PurchaseDateTime = purchases.PurchaseDateTime, MovieId = purchases.MovieId});
-            }
 
-            var purchaseOfUser = new PurchaseResponseModel
+            var purchase = await _purchaseRepository.GetPurchasesForUser(id);
+            var allpurchase = new List<MovieCard>();
+            foreach (var moviepurchase in purchase) 
+            {
+                allpurchase.Add(new MovieCard
+                {
+                    Id = moviepurchase.Id,
+                    Title = moviepurchase.Movie.Title,
+                    PosterUrl = moviepurchase.Movie.PosterUrl
+                });
+            };
+
+            var newpurchase = new PurchaseResponseModel
             {
                 UserId = id,
-                NumberOfMoviesPurchased = purchase.Count,
-                PurchaseOfMovieCards = purchase
-
+                PurchaseOfMovieCards = allpurchase,
+                NumberOfMoviesPurchased = allpurchase.Count
             };
-            return purchaseOfUser;
+            return newpurchase; 
+          
+            //var user = await _userRepository.GetById(id);
+            //var userFirstname = user.FirstName;
+            //var purchase = new List<MovieCard>();
+            //var test = user.PurchasesOfUser;
+            //foreach (var purchases in user.PurchasesOfUser)
+            //{
+            //    var newpurchases = _purchaseRepository.GetPurchaseById(id);
+            //    purchase.Add(new MovieCard
+            //    {
+            //        Id = purchases.Id,
+            //        Title = purchases.Movie.Title,
+            //        PosterUrl = purchases.Movie.PosterUrl
+            //    });              
+            //    //purchase.Add(new PurchaseDetailsModel { Id = purchases.Id, UserId = purchases.UserId, PurchaseNumber = purchases.PurchaseNumber, TotalPrice = purchases.TotalPrice,
+            //    //PurchaseDateTime = purchases.PurchaseDateTime, MovieId = purchases.MovieId});
+            //}
+
+            //var purchaseOfUser = new PurchaseResponseModel
+            //{
+            //    UserId = id,
+            //    NumberOfMoviesPurchased = purchase.Count,
+            //    PurchaseOfMovieCards = purchase
+
+            //};
+            //return purchaseOfUser;
         }
 
         public Task<List<MovieCard>> GetAllReviewsByUser(int id)

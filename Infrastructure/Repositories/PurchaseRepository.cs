@@ -27,5 +27,10 @@ namespace Infrastructure.Repositories
             return purchase;
         }
 
+        public async Task<List<Purchase>> GetPurchasesForUser(int id)
+        {
+           var purchases = await _dbContext.Purchases.Include(m=> m.Movie).Where(p=> p.UserId ==id).ToListAsync();
+            return purchases;
+        }
     }
 }

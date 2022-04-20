@@ -1,0 +1,23 @@
+ASP.NET Core API -> REST API
+
+Company ABC -> Movie Shop
+
+.NET TEAM -> MovieShop -> Web APP MVC -> SQL Server Database (MovieShopDb)
+-> GET  http://api.movieshop.com/api/movies/topgrossed -> JSON Data
+   Many URL
+   GET http://api.movieshop.com/api/movies/2
+   POST http://api.movieshop.com/api/account/register
+   POST http://api.movieshop.com/api/account/login
+
+Web Services ->
+REST Architecture -> Http, JSON or XML Data
+(old) SOAP -> Protocal, XML
+
+API appl;ication Programming Interface
+
+3 months -> Mobile App
+
+Android Team -> Java -> Home Page -> top movies -> UI
+iOS Team -> Swift -> UI
+Angular Team -> Front UI Angular
+React Team

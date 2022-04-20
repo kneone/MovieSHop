@@ -19,7 +19,7 @@ namespace ApplicationCore.Contracts.Services
         Task AddFavorite(FavoriteRequestModel favoriteRequest);
         Task RemoveFavorite(FavoriteRequestModel favoriteRequest);
         Task<bool> FavoriteExists(int id, int movieId);
-        Task<List<Favorite>> GetAllFavoritesForUser(int id);
+        Task<FavoriteResponseModel> GetAllFavoritesForUser(int id);
         Task AddMovieReview(ReviewRequestModel reviewRequest);
         Task UpdateMovieReview(ReviewRequestModel reviewRequest);
         Task DeleteMovieReview(int userId, int movieId);

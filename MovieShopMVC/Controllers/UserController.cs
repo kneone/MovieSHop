@@ -59,7 +59,7 @@ namespace MovieShopMVC.Controllers
         {
             var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var favorties = await _userService.GetAllFavoritesForUser(userId);
-            return View();
+            return View(favorties);
         }
 
         public async Task<IActionResult> Reviews()
@@ -67,7 +67,7 @@ namespace MovieShopMVC.Controllers
             var userId = Convert.ToInt32(this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var reviews = await _userService.GetAllReviewsByUser(userId);
             
-            return View();
+            return View(reviews);
         }
     }
 }
