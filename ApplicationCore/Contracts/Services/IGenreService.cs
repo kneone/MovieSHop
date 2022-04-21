@@ -10,6 +10,6 @@ namespace ApplicationCore.Contracts.Services
 {
     public interface IGenreService
     {
-        Task<List<Genre>> GetGenreForMovie(int movieId);
+        Task<GenreModel> GetMovieForGenre(int id);
     }
 }

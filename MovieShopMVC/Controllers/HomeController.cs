@@ -41,6 +41,12 @@ namespace MovieShopMVC.Controllers
             // we need to inject the type that implements the interface
             // INjection is built in .NET Core
             // older .net framework -> rher eis no built  in DI
+
+            // divide by zero, throw an exception manully
+            //int x = 10;
+            //int y = 0;
+            //int q = x / y;
+           
             var movies = await _movieService.Get30HighestGrossingMovies();
             return View(movies);
         }

@@ -9,6 +9,6 @@ namespace ApplicationCore.Contracts.Repositories
 {
     public interface IGenreRepository : IRepository<Genre>
     {
-        Task<List<Genre>> GetGenreForMovie(int id);
+        Task<Genre> GetGenreById(int id);
     }
 }

@@ -16,9 +16,9 @@ namespace Infrastructure.Repositories
         {
         }
 
-        public async Task<List<Genre>> GetGenreForMovie(int id)
+        public async Task<Genre> GetGenreById(int id)
         {
-            var genres = await _dbContext.Genres.Include(m => m.MoviesOfGenre).ThenInclude(m => m.Movie).Where(m => m.Id == id).ToListAsync();
+            var genres = await _dbContext.Genres.Include(m => m.MoviesOfGenre).ThenInclude(m => m.Movie).FirstOrDefaultAsync(m => m.Id == id);
             //var genres = await _dbContext.Genres.Include(m => m.Movie).Where(f => f.UserId == id).ToListAsync();
             return genres;
         }

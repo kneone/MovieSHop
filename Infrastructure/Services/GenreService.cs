@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Contracts.Repositories;
 using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,30 @@ namespace Infrastructure.Services
             _genreRepository = genreRepository;
         }
 
-        public Task<List<Genre>> GetGenreForMovie(int movieId)
+        public async Task<GenreModel> GetMovieForGenre(int id)
         {
-            throw new NotImplementedException();
+            var genre = await _genreRepository.GetGenreById(id);
+            var genrecard = new List<MovieCard>();
+            foreach (var movie in genre.MoviesOfGenre)
+            {
+                genrecard.Add(new MovieCard
+                {
+                    Id = movie.MovieId,
+                    Title = movie.Movie.Title,
+                    PosterUrl = movie.Movie.PosterUrl
+                });
+            }
+
+            var genreDetails = new GenreModel
+            {
+
+                Id = genre.Id,
+                Name = genre.Name,
+                GenreOfMovieCards = genrecard
+
+            };
+            //may need to return castDetailModel
+            return genreDetails;
         }
     }
 }

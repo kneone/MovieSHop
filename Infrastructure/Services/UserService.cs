@@ -97,7 +97,7 @@ namespace Infrastructure.Services
             {
                 allfavorite.Add(new MovieCard
                 {
-                    Id = moviefavorite.Id,
+                    Id = moviefavorite.MovieId,
                     Title = moviefavorite.Movie.Title,
                     PosterUrl = moviefavorite.Movie.PosterUrl
                 });

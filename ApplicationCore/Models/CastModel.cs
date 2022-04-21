@@ -11,6 +11,8 @@ namespace ApplicationCore.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string ProfilePath { get; set; }
+
+        //could be list of strings for character!!
         public string Character { get; set; }
 
         //could need a castDetailModel for cast detail page

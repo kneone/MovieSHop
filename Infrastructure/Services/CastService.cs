@@ -28,6 +28,7 @@ namespace Infrastructure.Services
                 Id = cast.Id,
                 Name = cast.Name,
                 ProfilePath = cast.ProfilePath,
+                //Character = cast.MovieOfCast.Character
                 
             };
             //may need to return castDetailModel

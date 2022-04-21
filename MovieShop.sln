@@ -14,10 +14,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		04-14-Notes.txt = 04-14-Notes.txt
 		04-18 Notes.txt = 04-18 Notes.txt
 		04-19 Notes.txt = 04-19 Notes.txt
+		40-20 Notes.txt = 40-20 Notes.txt
 		Notes.txt = Notes.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieShopAPI", "MovieShopAPI\MovieShopAPI.csproj", "{B6833C75-8537-427C-AE07-866980D876DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieShopAPI", "MovieShopAPI\MovieShopAPI.csproj", "{B6833C75-8537-427C-AE07-866980D876DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
