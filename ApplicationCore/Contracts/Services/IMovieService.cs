@@ -14,6 +14,11 @@ namespace ApplicationCore.Contracts.Services
 
         Task<MovieDetailsModel> GetMovieDetails(int id);
 
-       
+        Task<List<MovieCard>> Get30HighestRatedMovies();
+
+        Task<List<ReviewRequestModel>> GetReviewByMovieId(int id);
+
+
+
     }
 }

@@ -67,6 +67,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// enable CORS policy for http://localhost:4200
+// http://movieshopSPA.com
+app.UseCors(policy =>
+{
+    policy.WithOrigins(builder.Configuration["spaUrl"]).AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+});
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

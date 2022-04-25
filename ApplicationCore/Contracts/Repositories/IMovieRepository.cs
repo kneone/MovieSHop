@@ -11,5 +11,8 @@ namespace ApplicationCore.Contracts.Repositories
     {
         Task<IEnumerable<Movie>> Get30HighestGrossingMovies();
         Task<IEnumerable<Movie>> Get30HighestRatedMovies();
+
+        Task<Movie> GetMoviebyTitle(string title);
+       
     }
 }

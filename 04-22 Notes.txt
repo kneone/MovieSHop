@@ -1,0 +1,11 @@
+Controllers - Compoenets 
+Services - Reposiories to get the data -> services -> REST APIto get data, JSON format
+DI -> DI
+
+
+Route -> http://localhost:4200/movies.details/2 ->
+		 Angular Router a compoenet -> MovieDetails -> MovieService (HttpClient) (getTopMovies() -> Array MovieCard Model) -> AJAX Http Request to http://localhost:73232/api/2
+
+Task with async/await for asyn programming
+Obervables in Angular (There are lots of places where angular users observables)
+JS -> Promises

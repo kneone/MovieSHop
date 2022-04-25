@@ -91,5 +91,16 @@ namespace MovieShopAPI.Controllers
             // JWT
             return Ok(user);
         }
+
+        //added CheckEmail method in AccountService
+        [HttpGet]
+        [Route("check-email")]
+        public async Task<IActionResult> CheckEmail(string email)
+        {
+            var email_valid = await _accountService.CheckUserEmail(email);
+            
+            return Ok(email_valid);
+        }
+
     }
 }

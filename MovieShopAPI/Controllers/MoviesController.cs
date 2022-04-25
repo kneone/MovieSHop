@@ -10,9 +10,13 @@ namespace MovieShopAPI.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly IMovieService _movieService;
-        public MoviesController(IMovieService movieService)
+        private readonly IGenreService _genreService;
+        public MoviesController(IMovieService movieService, IGenreService genreService)
         {
             _movieService = movieService;
+            _genreService = genreService;
+
+
         }
 
         [HttpGet]
@@ -35,6 +39,21 @@ namespace MovieShopAPI.Controllers
         }
 
         [HttpGet]
+        [Route("top-rated")]
+        public async Task<IActionResult> GetTopRatedMovies()
+        {
+            var movies = await _movieService.Get30HighestRatedMovies();
+            if (!movies.Any())
+            {
+                return NotFound(new { errorNessage = "No Movies Found" });
+            }
+
+            return Ok(movies);
+        }
+
+
+
+        [HttpGet]
         [Route("{id:int}")]
         // http://localhost/api/movies/4
         public async Task<IActionResult> GetMovieDetails(int id)
@@ -44,5 +63,28 @@ namespace MovieShopAPI.Controllers
                 return NotFound(new { errorNessage = "No Movie Found for id" });
             return Ok(movie);
         }
+
+        [HttpGet]
+        [Route("{id:int}/reviews")]
+        public async Task<IActionResult> GetMovieReviews(int id)
+        {
+            var review = await _movieService.GetReviewByMovieId(id);
+            if (review == null)
+                return NotFound(new { errorNessage = "No Review Found for id" });
+            return Ok(review);
+        }
+
+
+        
+        [HttpGet]
+        [Route("genre")]
+        public async Task<IActionResult> GetGenreDetails(int id)
+        {
+            var genre = await _genreService.GetMovieForGenre(id);
+            if (genre == null)
+                return NotFound(new { errorNessage = "No Genre Found for id" });
+            return Ok(genre);
+        }
+        
     }
 }

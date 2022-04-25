@@ -16,13 +16,19 @@ namespace Infrastructure.Repositories
         {
         }
 
-        public Task<Review> GetReviewById(int userId, int movieId)
+        public async Task<Review> GetReviewById(int userId, int movieId)
         {
-            var review = _dbContext.Reviews.Include(m => m.Users).Include(m => m.Movie)
+            var review = await _dbContext.Reviews.Include(m => m.Users).Include(m => m.Movie)
                   .FirstOrDefaultAsync(m => m.UserId == userId && m.MovieId == movieId);
 
 
             return review;
+        }
+
+        public async Task<List<Review>> GetReviewByMovieId(int movieId)
+        {
+            var reviews = await _dbContext.Reviews.Include(m => m.Movie).Where(p => p.MovieId == movieId).ToListAsync();
+            return reviews;
         }
     }
 }

@@ -107,5 +107,17 @@ namespace Infrastructure.Services
            256 / 8));
             return hashed;
         }
+
+        //added for AccountController!!!
+        public async Task<bool> CheckUserEmail(string email)
+        {
+            var user = await _userRepository.GetUserByEmail(email);
+            if (user == null)
+            {
+               return false;
+            }
+
+            return true;
+        }
     }
 }

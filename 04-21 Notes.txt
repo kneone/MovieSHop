@@ -1,0 +1,39 @@
+MVC - > Traditional web application
+each nd every URL will return a HTML page
+Request -> Server -> take the URL and respond back with HTML
+
+SPA(Single page Applications)
+
+MovieShop -> 30 pages
+URL -> Page
+SPA -> load the application for the first time -> Get all the HTML pages(30) into the browser
+When you go to next request ->
+	1. http://localhost:4200 -> Home page, load all the pages HTML Homepage, Movie Details page, Cast Details, Login, Register, //(load when user logged in the web)Purchases, Favorites, Reviews, (users cannot see these two, do not need to load)Create Movie, Create Admin
+	
+	2. Modularize our application
+		1). Header(Navbar)
+		2). Specific page also needs to load
+	3. http://localhost:4200/movies/details/22 -> Movie Details, it need to go toServer just for the data  
+											   -> call the API for the JSON data -> http://movieshop.com/api/movies/details/2
+	4. Create mutiple modules, lazuli load based on requirment, decres the size of initial load for SPA
+		1). Public Module -> HTML Homepage, Movie Details page, Cast details
+		2). Admin Module -> create Movie, Create Cast -> User is logged in and user has admin role
+		3). User Module -> Purchases, Favorites, Reviews -> User is Logged in 
+		4). Auth Module -> Login, Register -> when user clicks on login or resigter button in navbar 
+										   -> loading this module based on routing  http://localhost:4200/login or http://localhost:4200/register
+	5. Ajax Calls are used in SPA -> Http request from the browser
+
+	Angular -> Google, 2011 Angularjs 1, 1.1, 1.2, 1.3, 1.4 -> JavaScript
+	2016 -> Angular 2, every 6 months release a new verison, 13 -> TypeScript(Superset of JS, Microsoft, designed by same guy who designed C#), Type Safe
+
+	Angular Framework -> comes with everything and its more opinionated
+
+	React -> Facebook -> rely on community for lot of things
+
+	Every NG app should have at least one module, by degalut angular  creates a moudle for you when you create a new app
+	You can craete many modules as per need
+
+	Main.ts -> appmodule.ts
+	Decotrators NgModule ->
+
+	Every compoenet that you create should be 

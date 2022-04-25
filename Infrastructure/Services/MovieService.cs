@@ -12,10 +12,12 @@ namespace Infrastructure.Services
     public class MovieService : IMovieService
     {
         private readonly IMovieRepository _movieRepository;
+        private readonly IReviewRepository _reviewRepository;
 
-        public MovieService(IMovieRepository movieRepository)
+        public MovieService(IMovieRepository movieRepository, IReviewRepository reviewRepository)
         {
             _movieRepository = movieRepository;
+            _reviewRepository = reviewRepository;
         }
         public async Task< List<MovieCard> >Get30HighestGrossingMovies()
         {
@@ -28,6 +30,40 @@ namespace Infrastructure.Services
             }
             return movieCards;
         }
+        public async Task<List<MovieCard>> Get30HighestRatedMovies()
+        {
+            var movies = await _movieRepository.Get30HighestRatedMovies();
+            // AutoMapper - Nuget
+            var movieCards = new List<MovieCard>();
+            foreach (var movie in movies)
+            {
+                movieCards.Add(new MovieCard { Id = movie.Id, PosterUrl = movie.PosterUrl, Title = movie.Title });
+            }
+            return movieCards;
+        }
+
+        public async Task<List<ReviewRequestModel>> GetReviewByMovieId(int id)
+        {
+            var reviews = await _reviewRepository.GetReviewByMovieId(id);
+
+            var reviewList = new List<ReviewRequestModel>();
+
+            foreach(var review in reviews)
+            {
+                reviewList.Add(new ReviewRequestModel
+                {
+                    MovieId = review.MovieId,
+                    UserId = review.UserId,
+                    Rating = review.Rating,
+
+                    ReviewText = review.ReviewText
+                });
+            }
+
+            return reviewList;
+            
+        }
+
 
         public async Task <MovieDetailsModel> GetMovieDetails(int id)
         {
@@ -81,6 +117,7 @@ namespace Infrastructure.Services
 
             return movieDetails;
 
+            
             // DI IMovieRepository
             // Models are nothing but dumb classes that transfer data, ViewModels, Models, DTO (Data Transfer Objects)
             //    public List<MovieCard> Get30HighestGrossingMovies()
@@ -144,6 +181,7 @@ namespace Infrastructure.Services
             //        }
 
             //        return movieDetails;
+
 
         }
     }
